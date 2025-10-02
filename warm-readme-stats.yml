@@ -1,0 +1,16 @@
+name: Warm Readme Stats Cache
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'    # runs every 5 minutes
+  workflow_dispatch:          # allow manual run
+
+jobs:
+  warm:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Curl stats endpoint to warm Vercel cache
+        run: |
+          # Replace the URL below with your generated stats image URL.
+          curl -sS "YOUR_STATS_URL_HERE" --fail >/dev/null
+          echo "warmed cache"
